@@ -22,7 +22,7 @@ const Footer = () => {
               <p><i className="fa fa-phone-alt mr-2"></i>+251 984 790 858</p>
               <p><i className="fa fa-envelope mr-2"></i>skillspectrum23@gmail.com</p>
               <div className="social d-flex justify-content-start mt-4">
-                <a className="tw btn btn-outline-light btn-square mr-2" href="#"><i className="fab fa-twitter"></i></a>
+                <a className="tw btn btn-outline-light btn-square mr-2" href="https://t.me/skillspectrum23" target='blank'><i className="fab fa-telegram"></i></a>
                 <a className="ig btn btn-outline-light btn-square mr-2" href="#"><i className="fab fa-instagram"></i></a>
                 <a className="fb btn btn-outline-light btn-square mr-2" href="#"><i className="fab fa-facebook-f"></i></a>
                 <a className="in btn btn-outline-light btn-square " href="#"><i className="fab fa-linkedin-in"></i></a>
@@ -43,13 +43,13 @@ const Footer = () => {
 
         {/* Newsletter Section */}
         <div className="col-lg-5 col-md-12 mb-5">
-          <h5 className="text-primary text-uppercase mb-4" style={{ letterSpacing: '5px' }}>Newsletter</h5>
-          <p>Subscribe to our newsletter for updates on courses and events!</p>
+          <h5 className="text-primary text-uppercase mb-4" style={{ letterSpacing: '5px' }}>Testimonial</h5>
+          <h3 style={{color:"white", marginBottom:"10px"}}>Share your experience with us</h3>
           <div className="w-100">
             <div className="input-group">
-              <input type="text" className="form-control border-light" style={{ padding: '30px' }} placeholder="Your Email Address" />
+              <input type="text" className="form-control border-light" style={{ padding: '30px' }} placeholder="Write here" />
               <div className="input-group-append">
-                <button className="btn btn-primary px-4">Sign Up</button>
+                <button className="btn btn-primary px-4">Submit</button>
               </div>
             </div>
           </div>
