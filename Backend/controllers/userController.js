@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+
 export const registerUser = async (req, res) => {
   const { username, email, password, course } = req.body;
   try {
@@ -22,18 +23,32 @@ export const registerUser = async (req, res) => {
 };
 
 export const loginUser = (req, res) => {
-  const { email, password } = req.body;
-  const query = 'SELECT * FROM users WHERE email = ?';
-  db.query(query, [email], async (err, results) => {
+  const { username, password } = req.body;
+  
+  const query = 'SELECT * FROM users WHERE username = ?';
+  db.query(query, [username], async (err, results) => {
     if (err || results.length === 0) {
-      return res.status(400).json({ message: 'Invalid email or password' });
+      return res.status(400).json({ message: 'Invalid username or password' });
     }
     const user = results[0];
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
-      return res.status(400).json({ message: 'Invalid email or password' });
+      return res.status(400).json({ message: 'Invalid username or password' });
     }
-    const token = jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ id: user.id, username: user.username }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
     res.status(200).json({ token });
+  });
+};
+
+export const getUserProfile = (req, res) => {
+  const token = req.headers.authorization.split(' ')[1];
+  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ message: 'Unauthorized' });
+    }
+    // Fetch user from the database using decoded.id or email
+    // Return user data (excluding sensitive fields like password)
+    res.json({ id: decoded.id, username: decoded.username, email: decoded.email });
   });
 };

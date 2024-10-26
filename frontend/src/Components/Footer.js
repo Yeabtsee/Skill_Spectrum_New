@@ -41,7 +41,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Newsletter Section */}
+        {/* Testimonial Section */}
         <div className="col-lg-5 col-md-12 mb-5">
           <h5 className="text-primary text-uppercase mb-4" style={{ letterSpacing: '5px' }}>Testimonial</h5>
           <h3 style={{color:"white", marginBottom:"10px"}}>Share your experience with us</h3>

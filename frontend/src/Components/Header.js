@@ -1,21 +1,57 @@
 import React, {useEffect, useState } from 'react';
 import { NavLink,Link } from 'react-router-dom';
-import { HashLink } from 'react-router-hash-link';
-import '../Assets/css/style.css'
+import '../Assets/css/style.css';
+import '../Assets/css/header.css';
+import axios from 'axios';
+import LogoutIcon from '@mui/icons-material/Logout';
+
 
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [userName, setUserName] = useState('');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
   };
 
+  const fetchUserData = async () => {
+    try {
+      const token = localStorage.getItem('token');
+
+      
+      if (token) {
+        setIsAuthenticated(true);
+        const response = await axios.get('http://localhost:5000/api/users/me', {
+         
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        return response.data; 
+      }
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+      return null;
+    }
+  };
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const user = await fetchUserData();
+      if (user) {
+        setUserName(user.username); 
+      }
+    };
+    fetchUser();
+  }, []);
+
   const navigateToSection = () => {
     if (window.location.pathname === '/'||window.location.pathname === '/about'||window.location.pathname === '/courses') {
       const section = document.querySelector('#register');
       if (section) {
-        section.scrollIntoView({ behavior: 'smooth' }); // Smooth scrolling on the same page
+        section.scrollIntoView({ behavior: 'smooth' }); 
       }
     } else {
       window.location.assign('/#register');
@@ -29,6 +65,13 @@ const Header = () => {
       }
     }
   }, [])
+  const handleLogout = () => {
+    if (window.confirm('Are you sure you want to log out?')) {
+      localStorage.removeItem('token');
+      setIsAuthenticated(false);
+      window.location.reload();
+    }
+  };
   
 
   return (
@@ -79,11 +122,27 @@ const Header = () => {
                   Contact
                 </NavLink>
               </div>
-
-              {/* <HashLink smooth to='#register' className="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block">Join Now</HashLink> */}
+              {isAuthenticated ? (
+                <>
+                <div className="logout-container">
+                  <span className="ml-auto" style={{fontSize:"25px", fontWeight:"bold"}}>Welcome, {userName}</span>
+                  <div className='logout-btn'>
+                   <button onClick={handleLogout}><LogoutIcon/></button>
+                   <span className="tooltip">Logout</span> 
+                  </div>
+                </div>
+                  
+                  
+                </>
+                
+              ) : ( 
               <button className="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" onClick={navigateToSection}>
                 Join Now
               </button>
+              )
+              }
+             
+
             </div>
           </nav>
         </div>

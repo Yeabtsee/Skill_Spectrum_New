@@ -1,0 +1,37 @@
+.logout-container {
+    position: relative;
+  }
+  
+  .logout-btn {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip {
+    visibility: hidden;
+    width: 80px;
+    background-color: rgb(66, 56, 56);
+    color: #ffffff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 5px;
+    position: absolute;
+    z-index: 100;
+    top: 100%; /* Position above the button */
+    left: 50%;
+    margin-left: -30px; /* Center the tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .logout-btn:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+  }
+  .logout-btn button{
+    border: none;
+    margin-left: 20px;
+    background-color: #ffffff;
+   
+  }
+  

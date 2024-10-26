@@ -27,21 +27,19 @@ const Registration = () => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            username: isLogin ? undefined : formData.username, // Only include username if not logging in
-            email: formData.email,
+            username: formData.username, 
+            email: isLogin ? undefined : formData.email, // Only include email if not logging in
             password: formData.password,
             course: isLogin ? undefined : formData.course // Only include courseId if registering
           }),
         });
-  
         const data = await response.json();
-  
         if (!response.ok) {
           throw new Error(data.message || 'Something went wrong');
         }
-  
-        alert(isLogin ? 'Login successful!' : 'Registration successful!');
-        // Optionally, redirect the user or handle the token after login
+          alert(isLogin ? 'Login successful!' : 'Registration successful!');
+          localStorage.setItem('token', data.token);
+          window.location.reload();
   
       } catch (error) {
         alert(error.message || 'An error occurred');
@@ -99,7 +97,7 @@ const Registration = () => {
                           <input type="password" name="password" value={formData.password} onChange={handleChange} className="form-control border-0 p-4" placeholder="Your password" required="required" />
                         </div>
                         <div className="form-group">
-                          <select name="course" value={formData.course} onChange={handleChange} className="custom-select border-0 px-4" style={{ height: '47px' }}>
+                          <select name="course" value={formData.course} onChange={handleChange} className="custom-select border-0 px-4" style={{ height: '47px' }} required="required">
                             <option selected>Select a course</option>
                             <option value="Python">Computer Programming (Python)</option>
                             <option value="Graphics Design">Graphic Design</option>
@@ -110,10 +108,10 @@ const Registration = () => {
                     ) : (
                       <>
                         <div className="form-group">
-                          <input type="email" value={formData.email} onChange={handleChange} className="form-control border-0 p-4" placeholder="Your email" required="required" />
+                          <input type="text" value={formData.username} name='username' onChange={handleChange} className="form-control border-0 p-4" placeholder="Your username" required="required" />
                         </div>
                         <div className="form-group">
-                          <input type="password" name="password" value={formData.password} onChange={handleChange}  className="form-control border-0 p-4" placeholder="Your password" required="required" />
+                          <input type="password" value={formData.password} name="password" onChange={handleChange}  className="form-control border-0 p-4" placeholder="Your password" required="required" />
                         </div>
                       </>
                     )}
