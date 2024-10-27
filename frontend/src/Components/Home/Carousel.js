@@ -5,6 +5,12 @@ import React from "react";
 import Carousel1 from '../../Assets/img/carousel-1.jpg'
 import Carousel2 from '../../Assets/img/carousel-2.jpg'
 import Carousel3 from '../../Assets/img/carousel-3.jpg'
+import Carousel4 from '../../Assets/img/carousel-4.jpg'
+import Carousel7 from '../../Assets/img/carousel-7.jpg'
+import Carousel6 from '../../Assets/img/carousel-6.jpg'
+import Carousel5 from '../../Assets/img/row-group-five-african-college-students-spending-time-together-campus-university-yard-black-afro-friends-studying-education-theme.jpg'
+import Carousel8 from '../../Assets/img/young-students-posing-with-tablet.jpg'
+
 
 const Carousel = () => {
    
@@ -18,7 +24,7 @@ const Carousel = () => {
         </ol>
         <div className="carousel-inner">
           <div className="carousel-item active" style={{ minHeight: "300px" }}>
-            <img className="position-relative w-100" src={Carousel1} alt="Carousel 1" style={{ minHeight: "300px", objectFit: "cover" }} />
+            <img className="position-relative w-100" src={Carousel7} alt="Carousel 1" style={{ minHeight: "300px", objectFit: "cover" }} />
             <div className="carousel-caption d-flex align-items-center justify-content-center">
               <div className="p-5" style={{ width: "100%", maxWidth: "900px" }}>
                 <h5 className="text-white text-uppercase mb-md-3"></h5>
@@ -28,7 +34,7 @@ const Carousel = () => {
             </div>
           </div>
           <div className="carousel-item" style={{ minHeight: "300px" }}>
-            <img className="position-relative w-100" src={Carousel2} alt="Carousel 1" style={{ minHeight: "300px", objectFit: "cover" }} />
+            <img className="position-relative w-100" src={Carousel8} alt="Carousel 1" style={{ minHeight: "300px", objectFit: "cover" }} />
             <div className="carousel-caption d-flex align-items-center justify-content-center">
               <div className="p-5" style={{ width: "100%", maxWidth: "900px" }}>
                 <h5 className="text-white text-uppercase mb-md-3"></h5>
@@ -38,7 +44,7 @@ const Carousel = () => {
             </div>
           </div>
           <div className="carousel-item " style={{ minHeight: "300px" }}>
-            <img className="position-relative w-100" src={Carousel3} alt="Carousel 1" style={{ minHeight: "300px", objectFit: "cover" }} />
+            <img className="position-relative w-100" src={Carousel5} alt="Carousel 1" style={{ minHeight: "300px", objectFit: "cover" }} />
             <div className="carousel-caption d-flex align-items-center justify-content-center">
               <div className="p-5" style={{ width: "100%", maxWidth: "900px" }}>
                 <h5 className="text-white text-uppercase mb-md-3"></h5>

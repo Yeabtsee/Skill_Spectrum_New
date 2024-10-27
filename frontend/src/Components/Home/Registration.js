@@ -37,9 +37,15 @@ const Registration = () => {
         if (!response.ok) {
           throw new Error(data.message || 'Something went wrong');
         }
-          alert(isLogin ? 'Login successful!' : 'Registration successful!');
+        if (isLogin) {
+          alert('Login successful!');
           localStorage.setItem('token', data.token);
+          localStorage.setItem('username', data.username);
           window.location.reload();
+      } else {
+          alert('Registration successful!');
+      }
+      
   
       } catch (error) {
         alert(error.message || 'An error occurred');
@@ -98,7 +104,7 @@ const Registration = () => {
                         </div>
                         <div className="form-group">
                           <select name="course" value={formData.course} onChange={handleChange} className="custom-select border-0 px-4" style={{ height: '47px' }} required="required">
-                            <option selected>Select a course</option>
+                            <option value="">Select a course</option>
                             <option value="Python">Computer Programming (Python)</option>
                             <option value="Graphics Design">Graphic Design</option>
                             <option value="Video Editing">Video Editing</option>

@@ -37,18 +37,18 @@ export const loginUser = (req, res) => {
     }
     const token = jwt.sign({ id: user.id, username: user.username }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-    res.status(200).json({ token });
+    res.status(200).json({ token, username });
   });
 };
 
-export const getUserProfile = (req, res) => {
-  const token = req.headers.authorization.split(' ')[1];
-  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-    if (err) {
-      return res.status(401).json({ message: 'Unauthorized' });
-    }
-    // Fetch user from the database using decoded.id or email
-    // Return user data (excluding sensitive fields like password)
-    res.json({ id: decoded.id, username: decoded.username, email: decoded.email });
-  });
-};
+// export const getUserProfile = (req, res) => {
+//   const token = req.headers.authorization.split(' ')[1];
+//   jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+//     if (err) {
+//       return res.status(401).json({ message: 'Unauthorized' });
+//     }
+//     // Fetch user from the database using decoded.id or email
+//     // Return user data (excluding sensitive fields like password)
+//     res.json({ id: decoded.id, username: decoded.username, email: decoded.email });
+//   });
+// };

@@ -1,14 +1,13 @@
-// Testimonial.js
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
-import test1 from '../../Assets/img/testimonial-1.jpg';
-import test2 from '../../Assets/img/testimonial-2.jpg';
-import test3 from '../../Assets/img/testimonial-3.jpg';
-import '../../Assets/css/testimonial.css'
+import '../../Assets/css/testimonial.css';
+import axios from 'axios'; 
 
 const Testimonial = () => {
+    const [testimonials, setTestimonials] = useState([]);
+
     const options = {
         autoplay: true,
         smartSpeed: 1500,
@@ -16,6 +15,22 @@ const Testimonial = () => {
         loop: true,
         items: 1
     };
+
+    useEffect(() => {
+        const fetchTestimonials = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/api/testimonials');
+                setTestimonials(response.data);
+                console.log('Fetched testimonials:', response.data);
+
+            } catch (error) {
+                console.error('Error fetching testimonials:', error);
+            }
+        };
+
+        fetchTestimonials();
+    }, []);
+    console.log(testimonials)
 
     return (
         <div className="container-fluid py-5">
@@ -26,29 +41,20 @@ const Testimonial = () => {
                 </div>
                 <div className="row justify-content-center">
                     <div className="col-lg-8">
+                    {testimonials.length > 0 ? (
                         <OwlCarousel className="owl-carousel testimonial-carousel" {...options}>
-                            <div className="text-center">
-                                <i className="fa fa-3x fa-quote-left text-primary mb-4"></i>
-                                <h4 className="font-weight-normal mb-4">Dolor eirmod diam stet kasd sed. Aliqu rebum est eos. Rebum elitr dolore et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</h4>
-                                <img className="img-fluid mx-auto mb-3" src={test1} alt=""/>
-                                <h5 className="m-0">Client Name</h5>
-                                <span>Profession</span>
-                            </div>
-                            <div className="text-center">
-                                <i className="fa fa-3x fa-quote-left text-primary mb-4"></i>
-                                <h4 className="font-weight-normal mb-4">Dolor eirmod diam stet kasd sed. Aliqu rebum est eos. Rebum elitr dolore et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</h4>
-                                <img className="img-fluid mx-auto mb-3" src={test2} alt=""/>
-                                <h5 className="m-0">Client Name</h5>
-                                <span>Profession</span>
-                            </div>
-                            <div className="text-center">
-                                <i className="fa fa-3x fa-quote-left text-primary mb-4"></i>
-                                <h4 className="font-weight-normal mb-4">Dolor eirmod diam stet kasd sed. Aliqu rebum est eos. Rebum elitr dolore et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</h4>
-                                <img className="img-fluid mx-auto mb-3" src={test3} alt=""/>
-                                <h5 className="m-0">Client Name</h5>
-                                <span>Profession</span>
-                            </div>
+                            {testimonials.map(testimonial => (
+                                <div className="text-center" key={testimonial.id}>
+                                    <i className="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                                    <h4 className="font-weight-normal mb-4">{testimonial.testimonial}</h4>
+                                    <h5 className="m-0">{testimonial.username}</h5>
+                                    <span>{testimonial.created_at}</span>
+                                </div>
+                            ))}
                         </OwlCarousel>
+                    ) : (
+                        <p>No testimonials available.</p>
+                    )}
                     </div>
                 </div>
             </div>

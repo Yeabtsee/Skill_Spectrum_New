@@ -11,64 +11,64 @@ const teamMembers = [
     image: team1,
     name: 'Yoseph Tewolde',
     position: 'Club President',
-    twitter: '#',
-    facebook: '#',
+    telegram: '#',
+    instagram: '#',
     linkedin: '#',
   },
   {
     image: team2,
     name: 'Abel Leulseged',
     position: 'Video Editor',
-    twitter: '#',
-    facebook: '#',
+    telegram: '#',
+    instagram: '#',
     linkedin: '#',
   },
   {
     image: team3,
     name: 'Yeabtsega Tesfaye',
     position: 'Web Developer',
-    twitter: '#',
-    facebook: '#',
+    telegram: '#',
+    instagram: '#',
     linkedin: '#',
   },
   {
     image: team4,
     name: 'Tinsae Daniel',
     position: 'Programmer',
-    twitter: '#',
-    facebook: '#',
+    telegram: '#',
+    instagram: '#',
     linkedin: '#',
   },
   {
     image: team1,
     name: 'Yoseph Tewolde',
     position: 'Club President',
-    twitter: '#',
-    facebook: '#',
+    telegram: '#',
+    instagram: '#',
     linkedin: '#',
   },
   {
     image: team2,
     name: 'Abel Leulseged',
     position: 'Video Editor',
-    twitter: '#',
-    facebook: '#',
+    telegram: '#',
+    instagram: '#',
     linkedin: '#',
   },
   {
     image: team3,
     name: 'Yeabtsega Tesfaye',
     position: 'Web Developer',
-    twitter: '#',
-    facebook: '#',
+    telegram: '#',
+    instagram: '#',
     linkedin: '#',
   },
   {
     image: team4,
     name: 'Tinsae Daniel',
     position: 'Programmer',
-    twitter: '#',
-    facebook: '#',
+    telegram: '#',
+    instagram: '#',
     linkedin: '#',
   },
 ];
@@ -88,8 +88,8 @@ const Team = () => {
               image={member.image}
               name={member.name}
               position={member.position}
-              twitter={member.twitter}
-              facebook={member.facebook}
+              telegram={member.telegram}
+              instagram={member.instagram}
               linkedin={member.linkedin}
             />
           ))}

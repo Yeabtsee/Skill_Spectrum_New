@@ -9,44 +9,20 @@ import LogoutIcon from '@mui/icons-material/Logout';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [userName, setUserName] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [username, setUsername] = useState('');
+
+  useEffect(() => {
+    const storedUsername = localStorage.getItem('username');
+    if (storedUsername) {
+      setUsername(storedUsername);
+      setIsAuthenticated(true);
+    }
+  }, []); // Runs only once when the component mounts
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
   };
-
-  const fetchUserData = async () => {
-    try {
-      const token = localStorage.getItem('token');
-
-      
-      if (token) {
-        setIsAuthenticated(true);
-        const response = await axios.get('http://localhost:5000/api/users/me', {
-         
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
-        return response.data; 
-      }
-    } catch (error) {
-      console.error('Error fetching user data:', error);
-      return null;
-    }
-  };
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      const user = await fetchUserData();
-      if (user) {
-        setUserName(user.username); 
-      }
-    };
-    fetchUser();
-  }, []);
-
   const navigateToSection = () => {
     if (window.location.pathname === '/'||window.location.pathname === '/about'||window.location.pathname === '/courses') {
       const section = document.querySelector('#register');
@@ -68,6 +44,7 @@ const Header = () => {
   const handleLogout = () => {
     if (window.confirm('Are you sure you want to log out?')) {
       localStorage.removeItem('token');
+      localStorage.removeItem('username')
       setIsAuthenticated(false);
       window.location.reload();
     }
@@ -125,16 +102,13 @@ const Header = () => {
               {isAuthenticated ? (
                 <>
                 <div className="logout-container">
-                  <span className="ml-auto" style={{fontSize:"25px", fontWeight:"bold"}}>Welcome, {userName}</span>
+                  <span className="ml-auto" style={{fontSize:"25px", fontWeight:"bold"}}>Welcome, {username}</span>
                   <div className='logout-btn'>
                    <button onClick={handleLogout}><LogoutIcon/></button>
                    <span className="tooltip">Logout</span> 
                   </div>
-                </div>
-                  
-                  
-                </>
-                
+                </div> 
+                </>  
               ) : ( 
               <button className="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" onClick={navigateToSection}>
                 Join Now

@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 import team1 from '../../Assets/img/team-3.jpg';
 import team2 from '../../Assets/img/team-2.jpg';
 import team3 from '../../Assets/img/20211218_1728511.jpg';
@@ -20,9 +21,9 @@ const Team = () => {
                         <div className="team-img position-relative">
                             <img className="img-fluid" src={team4} alt=""/>
                             <div className="team-social">
-                                <a className="btn btn-outline-light btn-square mx-1" href="#"><i className="fab fa-twitter"></i></a>
-                                <a className="btn btn-outline-light btn-square mx-1" href="#"><i className="fab fa-facebook-f"></i></a>
-                                <a className="btn btn-outline-light btn-square mx-1" href="#"><i className="fab fa-linkedin-in"></i></a>
+                                <Link className="btn btn-outline-light btn-square mx-1" to="#"><i className="fab fa-telegram"></i></Link>
+                                <Link className="btn btn-outline-light btn-square mx-1" to="#"><i className="fab fa-instagram"></i></Link>
+                                <Link className="btn btn-outline-light btn-square mx-1" to="#"><i className="fab fa-linkedin-in"></i></Link>
                             </div>
                         </div>
                         <div className="bg-secondary p-4">
@@ -37,9 +38,9 @@ const Team = () => {
                         <div className="team-img position-relative">
                             <img className="img-fluid" src={team2} alt=""/>
                             <div className="team-social">
-                                <a className="btn btn-outline-light btn-square mx-1" href="#"><i className="fab fa-twitter"></i></a>
-                                <a className="btn btn-outline-light btn-square mx-1" href="#"><i className="fab fa-facebook-f"></i></a>
-                                <a className="btn btn-outline-light btn-square mx-1" href="#"><i className="fab fa-linkedin-in"></i></a>
+                                <Link className="btn btn-outline-light btn-square mx-1" to="#"><i className="fab fa-telegram"></i></Link>
+                                <Link className="btn btn-outline-light btn-square mx-1" to="#"><i className="fab fa-instagram"></i></Link>
+                                <Link className="btn btn-outline-light btn-square mx-1" to="#"><i className="fab fa-linkedin-in"></i></Link>
                             </div>
                         </div>
                         <div className="bg-secondary p-4">
@@ -53,9 +54,9 @@ const Team = () => {
                         <div className="team-img position-relative">
                             <img className="img-fluid" src={team3} alt=""/>
                             <div className="team-social">
-                                <a className="btn btn-outline-light btn-square mx-1" href="#"><i className="fab fa-twitter"></i></a>
-                                <a className="btn btn-outline-light btn-square mx-1" href="#"><i className="fab fa-facebook-f"></i></a>
-                                <a className="btn btn-outline-light btn-square mx-1" href="#"><i className="fab fa-linkedin-in"></i></a>
+                                <Link className="btn btn-outline-light btn-square mx-1" to="#"><i className="fab fa-telegram"></i></Link>
+                                <Link className="btn btn-outline-light btn-square mx-1" to="#"><i className="fab fa-instagram"></i></Link>
+                                <Link className="btn btn-outline-light btn-square mx-1" to="#"><i className="fab fa-linkedin-in"></i></Link>
                             </div>
                         </div>
                         <div className="bg-secondary p-4">
@@ -69,9 +70,9 @@ const Team = () => {
                         <div className="team-img position-relative">
                             <img className="img-fluid" src={team4} alt=""/>
                             <div className="team-social">
-                                <a className="btn btn-outline-light btn-square mx-1" href="#"><i className="fab fa-twitter"></i></a>
-                                <a className="btn btn-outline-light btn-square mx-1" href="#"><i className="fab fa-facebook-f"></i></a>
-                                <a className="btn btn-outline-light btn-square mx-1" href="#"><i className="fab fa-linkedin-in"></i></a>
+                                <Link className="btn btn-outline-light btn-square mx-1" to="#"><i className="fab fa-telegram"></i></Link>
+                                <Link className="btn btn-outline-light btn-square mx-1" to="#"><i className="fab fa-instagram"></i></Link>
+                                <Link className="btn btn-outline-light btn-square mx-1" to="#"><i className="fab fa-linkedin-in"></i></Link>
                             </div>
                         </div>
                         <div className="bg-secondary p-4">
