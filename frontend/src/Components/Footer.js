@@ -5,15 +5,26 @@ import axios from 'axios';
 
 
 const Footer = () => {
+
+  const [testimonial, setTestimonial] = useState('');
+  const [courses, setCourses] = useState([]);
  
     const scrollToTop = () => {
       window.scrollTo({
         top: 0,
-        behavior: 'smooth', // This enables smooth scrolling
+        behavior: 'smooth', 
       });
     };
 
-    const [testimonial, setTestimonial] = useState('');
+  useEffect(() => {
+    const fetchCourses = async () => {
+      const response = await fetch('http://localhost:5000/api/courses');
+      const data = await response.json();
+      setCourses(data);
+    };
+
+    fetchCourses();
+  }, []);
     
 
     const handleSubmit = async (e) => {
@@ -70,11 +81,18 @@ const Footer = () => {
             <div className="col-md-6 mb-5">
               <h5 className="text-primary text-uppercase mb-4" style={{ letterSpacing: '5px' }}>Our Courses</h5>
               <div className="d-flex flex-column justify-content-start">
-                <Link className="text-white mb-2" to="/courses#python"><i className="fa fa-angle-right mr-2"></i>Computer Programming</Link>
-                <Link className="text-white mb-2" to="/courses#graphics"><i className="fa fa-angle-right mr-2"></i>Graphic Design</Link>
-                <Link className="text-white mb-2" to="/courses#video"><i className="fa fa-angle-right mr-2"></i>Video Editing</Link>
-              </div>
-            </div>
+                {courses.map(course => (
+                  <Link
+                    key={course.id}
+                    className="text-white mb-2"
+                    to={`/courses#${course.course_name.toLowerCase().replace(/ /g, '-')}`}
+                  >
+                    <i className="fa fa-angle-right mr-2"></i>
+                    {course.course_name}
+                  </Link>
+           ))}
+      </div>
+    </div>
           </div>
         </div>
 

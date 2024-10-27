@@ -1888,6 +1888,7 @@ pre code {
   border: 1px solid #ced4da;
   border-radius: 8px;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  margin-bottom: 8px;
 }
 
 @media (prefers-reduced-motion: reduce) {

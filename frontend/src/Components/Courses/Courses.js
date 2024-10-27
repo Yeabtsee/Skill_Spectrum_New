@@ -4,6 +4,7 @@ import Body from './Body'
 import Registration from '../Home/Registration'
 import Testimonial from '../Home/Testimonials'
 
+
 const Courses = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -14,6 +15,8 @@ const Courses = () => {
         setIsAuthenticated(true);
       }
     }, []);
+
+   
   return (
     <>
       <Banner/>

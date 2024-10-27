@@ -1,5 +1,5 @@
 import express from 'express';
-import db from '../config/db.js'; // Your MySQL connection
+import db from '../config/db.js'; 
 
 const testimonialsRoute = express.Router();
 
@@ -39,7 +39,6 @@ testimonialsRoute.post('/', (req, res) => {
 
 // GET endpoint for fetching testimonials with usernames
 testimonialsRoute.get('/', (req, res) => {
-  // SQL query to get testimonials with associated usernames
   const query = `
     SELECT t.id, t.testimonial, t.created_at, u.username 
     FROM testimonials t 
