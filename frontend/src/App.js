@@ -7,7 +7,7 @@ import About from './Components/About/About';
 import Courses from './Components/Courses/Courses';
 import Teachers from './Components/Teachers/Teachers';
 import Contact from './Components/Contact/Contact';
-
+import ResetPassword from './Components/ResetPassword';
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
      <Route path='/courses' element={<Courses/>}/>
      <Route path='/teachers' element={<Teachers/>}/>
      <Route path='/contact' element={<Contact/>}/>
+     <Route path="/reset-password/:token" element={<ResetPassword />} />
     </Routes>
      <Footer/>
    </Router>
