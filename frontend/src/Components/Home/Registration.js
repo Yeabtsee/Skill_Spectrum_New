@@ -21,8 +21,7 @@ const Registration = () => {
         e.preventDefault();
 
         // Check if resetting password
-        if (showResetPasswordForm) {
-           
+        if (showResetPasswordForm) {          
             try {
                 const response = await axios.post('http://localhost:5000/api/forgot-password', { email: formData.email });
                 console.log(response.data);
@@ -75,12 +74,31 @@ const Registration = () => {
                 <div className="row align-items-center">
                     <div className="col-lg-7 mb-5 mb-lg-0">
                         <div className="mb-4">
-                            <h5 className="text-primary text-uppercase mb-3" style={{ letterSpacing: '5px' }}>
+                            <h1 className="text-primary text-uppercase mb-3" style={{ letterSpacing: '5px' }}>
                                 Need Any Courses
-                            </h5>
-                            <h1 className="text-white">
-                                {isLogin ? 'Login to Your Account' : 'Registrations are now open!'}
                             </h1>
+                            <p className="text-white">{isLogin ? (<h1 className="text-white">Please login to continue.</h1>)  : 
+                                (
+                                <>
+                                <h1 className='text-white'>Registrations are now open!</h1>
+                                <p>- Secure your place by signing up for your desired course. Hurry up! We have a limited spot for each course.</p>
+                                <p className="text-white">What you will get after completion:</p>
+                                <ul className="list-inline text-white m-0">
+                                    <li className="py-2">
+                                    <i className="fa fa-check text-primary mr-3"></i>A valuable skill that will open new doors for your future.
+                                    </li>
+                                    <li className="py-2">
+                                    <i className="fa fa-check text-primary mr-3"></i>Opportunities to build connections with bright-minded individuals.
+                                    </li>
+                                    <li className="py-2">
+                                    <i className="fa fa-check text-primary mr-3"></i>Official recognition certificates from the university.
+                                    </li>
+                                </ul>
+                                </>
+                                )
+                              }</p>
+             
+
                         </div>
                         {/* Existing informational text content */}
                     </div>
