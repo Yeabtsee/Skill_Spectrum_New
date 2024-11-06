@@ -5,6 +5,8 @@ const Registration = () => {
     const [isLogin, setIsLogin] = useState(false);
     const [showResetPasswordForm, setShowResetPasswordForm] = useState(false);
     const [formData, setFormData] = useState({
+        fullName: '', // Added fullName
+        uni_id: '',       // Added id
         username: '',
         email: '',
         password: '',
@@ -44,6 +46,8 @@ const Registration = () => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
+                    fullName: formData.fullName, 
+                    uni_id: formData.uni_id,           
                     username: formData.username, 
                     email: isLogin ? undefined : formData.email,
                     password: formData.password,
@@ -51,13 +55,14 @@ const Registration = () => {
                 }),
             });
             const data = await response.json();
+           
             if (!response.ok) {
                 throw new Error(data.message || 'Something went wrong');
             }
             if (isLogin) {
                 alert('Login successful!');
                 localStorage.setItem('token', data.token);
-                localStorage.setItem('username', data.username);
+                localStorage.setItem('username', data.username.toUpperCase());
                 window.location.reload();
             } else {
                 alert('Registration successful!');
@@ -113,6 +118,7 @@ const Registration = () => {
                                         <>
                                             {isLogin ? (
                                                 <>
+                                                    
                                                     <div className="form-group">
                                                         <input
                                                             type="text"
@@ -138,6 +144,28 @@ const Registration = () => {
                                                 </>
                                             ) : (
                                                 <>
+                                                    <div className="form-group">
+                                                        <input
+                                                            type="text"
+                                                            name="fullName"
+                                                            value={formData.fullName}
+                                                            onChange={handleChange}
+                                                            className="form-control border-0 p-4"
+                                                            placeholder="Full Name"
+                                                            required
+                                                        />
+                                                    </div>
+                                                    <div className="form-group">
+                                                        <input
+                                                            type="text"
+                                                            name="uni_id"
+                                                            value={formData.uni_id}
+                                                            onChange={handleChange}
+                                                            className="form-control border-0 p-4"
+                                                            placeholder="ETS 0000/00"
+                                                            required
+                                                        />
+                                                    </div>
                                                     <div className="form-group">
                                                         <input
                                                             type="text"
@@ -181,8 +209,8 @@ const Registration = () => {
                                                             required
                                                         >
                                                             <option value="">Select a course</option>
-                                                            <option value="Python">Computer Programming (Python)</option>
-                                                            <option value="Graphics Design">Graphic Design</option>
+                                                            <option value="Computer Programming (Python)">Computer Programming (Python)</option>
+                                                            {/* <option value="Graphics Design">Graphic Design</option> */}
                                                             <option value="Video Editing">Video Editing</option>
                                                         </select>
                                                     </div>
@@ -221,8 +249,7 @@ const Registration = () => {
                                         </>
                                     ) : (
                                         <>
-                                            <h4 className="text-center text-white">Reset Password</h4>
-                                          
+                                            <h4 className="text-center text-white">Reset Password</h4>                           
                                               <div className="form-group">
                                                   <input
                                                       type="email"

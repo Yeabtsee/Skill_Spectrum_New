@@ -8,6 +8,7 @@ import Courses from './Components/Courses/Courses';
 import Teachers from './Components/Teachers/Teachers';
 import Contact from './Components/Contact/Contact';
 import ResetPassword from './Components/ResetPassword';
+import Admin from './Components/Admin/Admin';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
      <Route path='/teachers' element={<Teachers/>}/>
      <Route path='/contact' element={<Contact/>}/>
      <Route path="/reset-password/:token" element={<ResetPassword />} />
+     <Route path="/admin" element={<Admin/>}/>
     </Routes>
      <Footer/>
    </Router>
