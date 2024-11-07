@@ -79,14 +79,18 @@ const Registration = () => {
                 <div className="row align-items-center">
                     <div className="col-lg-7 mb-5 mb-lg-0">
                         <div className="mb-4">
-                            <h1 className="text-primary text-uppercase mb-3" style={{ letterSpacing: '5px' }}>
+                            {/* <h1 className="text-primary text-uppercase mb-3" style={{ letterSpacing: '5px' }}>
                                 Need Any Courses
-                            </h1>
+                            </h1> */}
                             <p className="text-white">{isLogin ? (<h1 className="text-white">Please login to continue.</h1>)  : 
                                 (
                                 <>
-                                <h1 className='text-white'>Registrations are now open!</h1>
-                                <p>- Secure your place by signing up for your desired course. Hurry up! We have a limited spot for each course.</p>
+                                <h1 className='text-white'>Registrations are now Closed!</h1>
+                                <br/>
+                                <h4 className='text-white'>Stay tuned until the next registration!</h4>
+                                <br/>
+                                <h5 className='text-white'>You Can Login to your account! </h5>
+                                {/* <p>- Secure your place by signing up for your desired course. Hurry up! We have a limited spot for each course.</p>
                                 <p className="text-white">What you will get after completion:</p>
                                 <ul className="list-inline text-white m-0">
                                     <li className="py-2">
@@ -98,7 +102,7 @@ const Registration = () => {
                                     <li className="py-2">
                                     <i className="fa fa-check text-primary mr-3"></i>Official recognition certificates from the university.
                                     </li>
-                                </ul>
+                                </ul> */}
                                 </>
                                 )
                               }</p>
@@ -218,12 +222,22 @@ const Registration = () => {
                                                 </>
                                             )}
                                             <div>
-                                                <button
+                                                {
+                                                    isLogin ?(
+                                                    <button
                                                     className="btn btn-dark btn-block border-0 py-3"
                                                     type="submit"
-                                                >
-                                                    {isLogin ? 'Login' : 'Sign Up Now'}
-                                                </button>
+                                                    >Login
+                                                    </button>
+                                                    ):(
+                                                    <button
+                                                    className="btn btn-dark btn-block border-0 py-3"
+                                                    type="submit"
+                                                    disabled
+                                                    >Sign Up Now
+                                                    </button>
+                                                    )
+                                                }
                                                 <div className="text-center mt-3">
                                                   <a
                                                       href="#"
