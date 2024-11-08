@@ -70,3 +70,22 @@ export const allUsers = (req, res) => {
   });
 };
 
+export const myCourse = (req, res) => {
+  const { user } = req.body;
+  console.log(user)
+  const query = 'SELECT course FROM users where username=?';
+
+  db.query(query,[user], (err, result) => {
+    if (err) {
+      console.error("Error accessing the database:", err);
+      return res.status(500).json({ message: 'Error accessing the database!' });
+    }
+    // Check if results is an array and if it has elements
+    if ( result.length === 0) {
+      return res.status(404).json({ message: 'No users found!' });
+    }
+
+    res.status(200).json( result );
+  });
+};
+

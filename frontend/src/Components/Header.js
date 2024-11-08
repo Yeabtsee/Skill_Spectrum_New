@@ -49,6 +49,7 @@ const Header = () => {
       window.location.reload();
     }
   };
+
   const adminUsers = ["YEAB", "JOSI", "ABEL"];
 
   return (
@@ -80,6 +81,11 @@ const Header = () => {
             {isAuthenticated && adminUsers.includes(username) && (
               <NavLink to="/admin" className="nav-item nav-link" style={({ isActive }) => ({ color: isActive ? 'orange' : 'black' })}>
                 Admin
+              </NavLink>
+            )}
+            {isAuthenticated && (
+              <NavLink to="/mycourse" className="nav-item nav-link" style={({ isActive }) => ({ color: isActive ? 'orange' : 'black' })}>
+                My Course
               </NavLink>
             )}
           </div>
