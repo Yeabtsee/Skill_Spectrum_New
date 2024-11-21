@@ -52,13 +52,10 @@ exerciseRoute.post('/submit', upload.single('File'), (req, res) => {
       console.error('Database error:', err); // Log the error
       return res.status(500).json({ message: 'Failed to add exercise to the database.' });
     }
-    res.status(201).json({ message: `Exercise for '${exercise.courseName}' added successfully!`, exercise });
+    res.status(201).json({ message: `Exercise for '${exercise.courseName}' submitted successfully!`, exercise });
   });
 });
 
-//   database.saveExercise(exercise);
-
-  // res.json({ message: 'Exercise submitted successfully!', exercise });
 });
 
 export default exerciseRoute;
