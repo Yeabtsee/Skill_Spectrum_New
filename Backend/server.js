@@ -9,6 +9,7 @@ import db from './config/db.js';
 import contactsRoute from './Routes/contact.js';
 import resetRoute from './Routes/resetPassword.js';
 import TokenRoutes from './Routes/password.js'
+import exerciseRoute from './Routes/exercise.js';
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ app.use('/api/testimonials', testimonialsRoute);
 app.use('/api/contacts', contactsRoute);
 app.use('/api/forgot-password', resetRoute);
 app.use('/api/reset-password', TokenRoutes)
+app.use('/api/exercise', exerciseRoute)
 
 
 const PORT = process.env.PORT;
