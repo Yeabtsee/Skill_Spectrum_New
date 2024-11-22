@@ -174,7 +174,7 @@ const handlePrint = (course) => {
               <td>{submission.course}</td>
               <td>{submission.description}</td>
               <td>
-                <a href={`http://localhost:5000/${submission.file_path}`} target="_blank" rel="noopener noreferrer">
+                <a href={`http://localhost:5000/uploads/exercises/${submission.file_name}`} target="_blank" rel="noopener noreferrer">
                   Download
                 </a>
               </td>
